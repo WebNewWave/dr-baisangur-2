@@ -158,7 +158,7 @@ h1,h2,h3{font-family:var(--f-display);color:var(--c-ink);line-height:1.1;margin:
 .ba-label--after{right:14px}
 
 .case-story-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
-.case-story-photo img{width:100%;border-radius:var(--radius-sm);object-fit:cover;aspect-ratio:4/5;box-shadow:var(--shadow-sm)}
+.case-story-photo img{width:100%;border-radius:var(--radius-sm);object-fit:cover;object-position:center top;aspect-ratio:4/5;box-shadow:var(--shadow-sm)}
 .case-story-text p{margin:0 0 14px;color:var(--c-muted)}
 .case-block--story{background:var(--c-accent-soft);border-color:transparent}
 
@@ -180,21 +180,21 @@ h1,h2,h3{font-family:var(--f-display);color:var(--c-ink);line-height:1.1;margin:
 .rec-card p{font-size:14.5px;color:rgba(255,255,255,.78);margin:0}
 
 /* ---------- Контакты ---------- */
-.contact-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:44px}
+.contact-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:32px}
 .contact-lead{font-size:20px;color:var(--c-ink);font-weight:500;margin:0 0 22px}
-.contact-cta{display:inline-flex;align-items:center;gap:14px;background:var(--c-accent);color:#fff;padding:16px 26px;border-radius:999px;box-shadow:var(--shadow-accent);margin-bottom:30px;transition:transform var(--t-fast) var(--ease),background var(--t-fast)}
+.contact-cta{display:inline-flex;align-items:center;gap:14px;background:var(--c-accent);color:#fff;padding:16px 26px;border-radius:999px;box-shadow:var(--shadow-accent);margin-bottom:22px;transition:transform var(--t-fast) var(--ease),background var(--t-fast)}
 .contact-cta:hover{transform:translateY(-2px);background:var(--c-accent-deep)}
 .contact-cta-handle{font-family:var(--f-display);font-weight:800;font-size:18px}
 .contact-cta-label{font-size:14px;opacity:.9}
 .contact-cta svg{width:20px;height:20px}
-.contact-list{list-style:none;padding:0;margin:0;display:grid;gap:18px}
+.contact-list{list-style:none;padding:0;margin:0;display:grid;gap:14px}
 .contact-list li{display:flex;flex-direction:column;gap:3px;border-bottom:1px solid var(--c-line);padding-bottom:14px}
 .contact-label{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--c-accent)}
 .contact-list a{font-weight:600;color:var(--c-ink)}
-.contact-aside{display:flex;flex-direction:column;gap:18px}
+.contact-aside{display:flex;flex-direction:column;gap:14px}
 .contact-photo img{width:100%;border-radius:var(--radius);aspect-ratio:4/5;object-fit:cover;box-shadow:var(--shadow)}
 .contact-qr-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.contact-qr-item{background:var(--c-surface);border:1px solid var(--c-line);border-radius:var(--radius-sm);padding:18px;text-align:center;transition:transform var(--t-fast) var(--ease),box-shadow var(--t-fast)}
+.contact-qr-item{background:var(--c-surface);border:1px solid var(--c-line);border-radius:var(--radius-sm);padding:14px;text-align:center;transition:transform var(--t-fast) var(--ease),box-shadow var(--t-fast)}
 .contact-qr-item:hover{transform:translateY(-3px);box-shadow:var(--shadow-sm)}
 .contact-qr-icon{font-size:22px;color:var(--c-accent);margin-bottom:6px}
 .contact-qr-item span{display:block;font-weight:600;color:var(--c-ink);font-size:14px}
@@ -204,6 +204,9 @@ h1,h2,h3{font-family:var(--f-display);color:var(--c-ink);line-height:1.1;margin:
 .fab{position:fixed;right:24px;bottom:24px;z-index:110;display:inline-flex;align-items:center;gap:10px;background:var(--c-ink);color:#fff;font-weight:600;font-size:14px;padding:14px 22px;border-radius:999px;box-shadow:var(--shadow);transition:transform var(--t-fast) var(--ease),background var(--t-fast)}
 .fab svg{width:20px;height:20px}
 .fab:hover{transform:translateY(-3px);background:var(--c-accent-deep)}
+
+/* Компактнее экран контактов */
+.view-contact .view-inner{padding-top:48px;padding-bottom:48px}
 
 /* ---------- Footer ---------- */
 .site-footer{background:var(--c-ink);color:rgba(255,255,255,.8);margin-top:60px}
