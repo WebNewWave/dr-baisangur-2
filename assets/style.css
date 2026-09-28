@@ -281,6 +281,7 @@ h1,h2,h3{font-family:var(--f-display);color:var(--c-ink);line-height:1.1;margin:
   .advantage-label{font-size:11px}
   .case-head h3{font-size:20px}
   .case-text{font-size:14.5px}
+  .case-story-photo img{width:100%;height:100%;margin:0;aspect-ratio:1/1;object-position:center}
   .myth-statement{font-size:16px}
   .myth-answer{font-size:13.5px}
   .rec-num{font-size:28px}
