@@ -121,43 +121,56 @@
     });
   }
 
-  /* ===== Слайдер до/после ===== */
+  /* ===== Слайдер до/после (clip-path) ===== */
   function initBeforeAfter() {
     document.querySelectorAll(".ba-slider").forEach(function (slider) {
       if (slider.dataset.baInit) return;
       slider.dataset.baInit = "1";
-      var wrap = slider.querySelector(".ba-before-wrap");
       var handle = slider.querySelector(".ba-handle");
-      if (!wrap || !handle) return;
+      if (!handle) return;
       var dragging = false;
+      var activePointerId = null;
 
-      function setPos(clientX) {
-        var rect = slider.getBoundingClientRect();
-        var x = clientX - rect.left;
-        var pct = (x / rect.width) * 100;
+      function setPos(pct) {
         pct = Math.max(0, Math.min(100, pct));
-        wrap.style.width = pct + "%";
-        handle.style.left = pct + "%";
+        var v = pct + "%";
+        slider.style.setProperty("--ba-pct", v);
+        handle.style.left = v;
       }
-      function start(e) { dragging = true; move(e); }
-      function move(e) {
+
+      function pctFromClientX(clientX) {
+        var rect = slider.getBoundingClientRect();
+        if (rect.width <= 0) return 50;
+        var x = clientX - rect.left;
+        return Math.max(0, Math.min(100, (x / rect.width) * 100));
+      }
+
+      function onDown(e) {
+        dragging = true;
+        activePointerId = e.pointerId;
+        setPos(pctFromClientX(e.clientX));
+        try { slider.setPointerCapture(e.pointerId); } catch (_) {}
+        e.preventDefault();
+      }
+      function onMove(e) {
         if (!dragging) return;
-        var x = e.touches ? e.touches[0].clientX : e.clientX;
-        setPos(x);
+        if (activePointerId !== null && e.pointerId !== activePointerId) return;
+        setPos(pctFromClientX(e.clientX));
         if (e.cancelable) e.preventDefault();
       }
-      function end() { dragging = false; }
+      function onUp(e) {
+        if (activePointerId !== null && e.pointerId !== activePointerId) return;
+        dragging = false;
+        activePointerId = null;
+        try { slider.releasePointerCapture(e.pointerId); } catch (_) {}
+      }
 
-      handle.addEventListener("mousedown", start);
-      slider.addEventListener("mousedown", function (e) { if (e.target === handle) return; dragging = true; move(e); });
-      window.addEventListener("mousemove", move);
-      window.addEventListener("mouseup", end);
-      handle.addEventListener("touchstart", start, { passive: true });
-      slider.addEventListener("touchstart", function (e) { if (e.target === handle) return; dragging = true; move(e); }, { passive: true });
-      window.addEventListener("touchmove", move, { passive: false });
-      window.addEventListener("touchend", end);
-      // клик по слайдеру перемещает ползунок
-      slider.addEventListener("click", function (e) { if (e.target === handle || handle.contains(e.target)) return; setPos(e.clientX); });
+      slider.addEventListener("pointerdown", onDown);
+      slider.addEventListener("pointermove", onMove);
+      slider.addEventListener("pointerup", onUp);
+      slider.addEventListener("pointercancel", onUp);
+
+      setPos(50);
     });
   }
 
