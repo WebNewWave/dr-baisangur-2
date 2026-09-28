@@ -158,7 +158,7 @@ h1,h2,h3{font-family:var(--f-display);color:var(--c-ink);line-height:1.1;margin:
 .ba-label--after{right:14px}
 
 .case-story-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
-.case-story-photo img{width:100%;border-radius:var(--radius-sm);object-fit:cover;object-position:center 20%;aspect-ratio:3/4;box-shadow:var(--shadow-sm)}
+.case-story-photo img{width:112%;height:112%;margin:-1% -6% -1% -6%;border-radius:var(--radius-sm);object-fit:cover;object-position:right top;aspect-ratio:3/4;box-shadow:var(--shadow-sm)}
 .case-story-text p{margin:0 0 14px;color:var(--c-muted)}
 .case-block--story{background:var(--c-accent-soft);border-color:transparent}
 
