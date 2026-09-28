@@ -77,7 +77,7 @@ h1,h2,h3{font-family:var(--f-display);color:var(--c-ink);line-height:1.1;margin:
 /* ---------- Секции: заголовки ---------- */
 .section-header{display:flex;flex-direction:column;gap:8px;margin-bottom:36px}
 .section-kicker{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--c-accent)}
-.section-title{font-size:clamp(32px,5vw,52px);font-weight:800}
+.section-title{font-size:clamp(26px,5vw,52px);font-weight:800}
 .section-lead{font-size:clamp(17px,2vw,20px);color:var(--c-muted);max-width:62ch;margin:0 0 40px}
 
 /* ---------- Hero ---------- */
@@ -85,7 +85,7 @@ h1,h2,h3{font-family:var(--f-display);color:var(--c-ink);line-height:1.1;margin:
 .hero-bg{position:absolute;inset:0;background:radial-gradient(1200px 600px at 80% -10%,var(--c-accent-soft),transparent 60%);z-index:0;pointer-events:none}
 .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;min-height:92vh;padding-top:140px;padding-bottom:80px}
 .hero-eyebrow{font-size:13px;font-weight:700;letter-spacing:.22em;color:var(--c-accent);margin:0 0 18px}
-.hero-title{font-size:clamp(44px,7vw,82px);font-weight:800;letter-spacing:-.03em}
+.hero-title{font-size:clamp(36px,7vw,82px);font-weight:800;letter-spacing:-.03em}
 .hero-accent{color:var(--c-accent)}
 .hero-subtitle{font-family:var(--f-display);font-weight:600;font-size:clamp(18px,2.4vw,24px);color:var(--c-ink);margin:18px 0 10px}
 .hero-desc{font-size:17px;color:var(--c-muted);max-width:46ch;margin:0 0 30px}
@@ -99,14 +99,14 @@ h1,h2,h3{font-family:var(--f-display);color:var(--c-ink);line-height:1.1;margin:
 .hero-stats strong{font-family:var(--f-display);font-size:30px;font-weight:800;color:var(--c-ink)}
 .hero-stats span{font-size:13px;color:var(--c-muted)}
 .hero-photo{position:relative}
-.hero-photo img{width:100%;height:560px;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow)}
+.hero-photo img{width:100%;height:560px;object-fit:cover;object-position:center top;border-radius:var(--radius);box-shadow:var(--shadow)}
 .hero-badge{position:absolute;left:18px;bottom:18px;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-radius:999px;padding:10px 18px;font-size:13px;font-weight:600;color:var(--c-ink-soft);display:flex;align-items:center;gap:8px;box-shadow:var(--shadow-sm)}
 .hero-badge-dot{width:9px;height:9px;border-radius:50%;background:var(--c-accent);box-shadow:0 0 0 4px var(--c-accent-soft)}
 
 /* ---------- О враче ---------- */
 .about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:start}
 .about-photo{position:relative}
-.about-photo img{width:100%;border-radius:var(--radius);box-shadow:var(--shadow);object-fit:cover;aspect-ratio:4/5}
+.about-photo img{width:100%;border-radius:var(--radius);box-shadow:var(--shadow);object-fit:cover;object-position:center top;aspect-ratio:4/5}
 .about-photo-tag{position:absolute;left:14px;bottom:14px;background:var(--c-accent);color:#fff;font-size:12px;font-weight:600;padding:7px 14px;border-radius:999px}
 .about-text p{margin:0 0 16px}
 .about-lead{font-size:19px;color:var(--c-ink-soft);font-weight:500}
@@ -192,7 +192,7 @@ h1,h2,h3{font-family:var(--f-display);color:var(--c-ink);line-height:1.1;margin:
 .contact-label{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--c-accent)}
 .contact-list a{font-weight:600;color:var(--c-ink)}
 .contact-aside{display:flex;flex-direction:column;gap:14px}
-.contact-photo img{width:100%;border-radius:var(--radius);aspect-ratio:4/5;object-fit:cover;box-shadow:var(--shadow)}
+.contact-photo img{width:100%;border-radius:var(--radius);aspect-ratio:4/5;object-fit:cover;object-position:center top;box-shadow:var(--shadow)}
 .contact-qr-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .contact-qr-item{background:var(--c-surface);border:1px solid var(--c-line);border-radius:var(--radius-sm);padding:14px;text-align:center;transition:transform var(--t-fast) var(--ease),box-shadow var(--t-fast)}
 .contact-qr-item:hover{transform:translateY(-3px);box-shadow:var(--shadow-sm)}
@@ -243,6 +243,19 @@ h1,h2,h3{font-family:var(--f-display);color:var(--c-ink);line-height:1.1;margin:
   .services-grid,.tech-grid,.myths-grid,.recs-grid{grid-template-columns:1fr}
   .fab span{display:none}
   .fab{padding:14px}
+}
+
+/* Мобильные контакты (<640px): фото+QR наверх, CTA во всю ширину,
+   список — плотный, телефоном удобно скроллить. */
+@media (max-width:640px){
+  .contact-grid{display:flex;flex-direction:column;gap:18px}
+  .contact-aside{order:-1}
+  .contact-photo img{aspect-ratio:16/10;max-height:220px;object-position:center top}
+  .contact-qr-grid{gap:10px}
+  .contact-cta{width:100%;justify-content:center}
+  .contact-list{grid-template-columns:1fr 1fr;gap:10px 14px}
+  .contact-list li{padding-bottom:10px}
+  .contact-lead{font-size:clamp(17px,4.6vw,20px)}
 }
 
 /* ---------- Мобильное меню активно ---------- */
