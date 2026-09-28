@@ -248,9 +248,9 @@ h1,h2,h3{font-family:var(--f-display);color:var(--c-ink);line-height:1.1;margin:
 /* Мобильные контакты (<640px): фото+QR наверх, CTA во всю ширину,
    список — плотный, телефоном удобно скроллить. */
 @media (max-width:640px){
-  .contact-grid{display:flex;flex-direction:column;gap:18px}
+  .contact-grid{display:flex;flex-direction:column;gap:18px;max-width:480px;margin:0 auto;align-items:stretch}
   .contact-aside{order:-1}
-  .contact-photo img{aspect-ratio:16/10;max-height:220px;object-position:center top}
+  .contact-photo img{aspect-ratio:4/5;max-height:360px;object-position:center top}
   .contact-qr-grid{gap:10px}
   .contact-cta{width:100%;justify-content:center}
   .contact-list{grid-template-columns:1fr 1fr;gap:10px 14px}
